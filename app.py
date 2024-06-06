@@ -23,6 +23,9 @@ def authenticate(username, password):
 
 # Display the login page
 def login_page():
+
+    pip uninstall pillow
+pip install pillow
     st.title("Login")
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
