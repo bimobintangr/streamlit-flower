@@ -64,7 +64,21 @@ model.compile(optimizer='adam',
 
 
 
+import gdown
 
+def download_model_from_drive():
+    url = 'https://drive.google.com/file/d/1NCRugtvgOqAqwdbdoCXfF7KtYv6Jlk42/view?usp=sharing'
+    output = 'my_model2.hdf5'
+    gdown.download(url, output, quiet=False)
+
+def load_model():
+    model_path = 'my_model2.hdf5'
+    if not os.path.exists(model_path):
+        download_model_from_drive()
+    model = tf.keras.models.load_model(model_path)
+    return model
+
+model = load_model()
 epochs=10
 history = model.fit(
   train_ds,
